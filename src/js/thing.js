@@ -235,7 +235,7 @@ var renderLocatorMap = function(config) {
 
     waterLabels.append('text')
         .attr('class', 'atlantic-ocean')
-        .attr('transform', 'translate(' + projection([-58, 29]) + ')')
+        .attr('transform', 'translate(' + projection([-54, 26]) + ')')
         .text('Atlantic Ocean');
 
     waterLabels.append('text')
@@ -245,8 +245,13 @@ var renderLocatorMap = function(config) {
 
     labelsElement.append('text')
         .attr('class', 'matthew')
-        .attr('transform', 'translate(' + projection([-65, 16]) + ')')
+        .attr('transform', 'translate(' + projection([-60, 16]) + ')')
         .text('Hurricane Matthew');
+
+    labelsElement.append('text')
+        .attr('class', 'previous')
+        .attr('transform', 'translate(' + projection([-64, 33]) + ')')
+        .text('Category 5 Hurricanes since 1965');
 
     /*
      * Render a scale bar.
