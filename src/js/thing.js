@@ -37,6 +37,7 @@ var isMobile = false;
 var identityProjection = null;
 var bbox = null;
 var topoData = {};
+var isAnimating = false;
 
 
 /**
@@ -186,18 +187,32 @@ var renderLocatorMap = function(config) {
     if (!isMobile) {
         chartElement.on('click', null);
         chartElement.on('click', function(d) {
+            if (isAnimating) {
+                return;
+            }
+
+            isAnimating = true;
+
+            var maxTimeout = 0;
+
             d3.selectAll('.tracks path,.matthew path').each(function(d) {
                 var path = d3.select(this);
                 var totalLength = path.node().getTotalLength();
+                var timeout = totalLength * (1 / mapScale) * 1200;
+                maxTimeout = Math.max(maxTimeout, timeout);
 
                 path.attr("stroke-dasharray", totalLength + " " + totalLength)
                     .attr("stroke-dashoffset", totalLength)
                     .transition()
-                    // Sampled at 6 hour intervals
-                    .duration(totalLength * (1 / mapScale) * 1200)
-                    .ease("linear")
-                    .attr("stroke-dashoffset", 0);
+                        // Sampled at 6 hour intervals
+                        .duration(timeout)
+                        .ease("linear")
+                        .attr("stroke-dashoffset", 0);
             });
+
+            setTimeout(function() {
+                isAnimating = false;
+            }, maxTimeout);
         });
     }
 
