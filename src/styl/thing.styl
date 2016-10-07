@@ -49,8 +49,12 @@ svg
 
 	.tracks path
 		fill: none
-		stroke: $qz-purp-2
+		stroke: $qz-blue-1
 
+	.matthew path
+		fill none
+		stroke $qz-map-highlight
+		stroke-width 2.5px
 
 // Labels
 .labels
@@ -86,8 +90,9 @@ svg
 	.water text
 		font-size: 100%
 
-		&.gulf-of-mexico
-			font-size: 80%
+	.matthew
+		font-size: 100%
+		fill $qz-map-highlight
 
 // Scale bar
 .scale-bar
@@ -106,5 +111,5 @@ svg
 	svg
 		font-size 14px
 
-	.gulf-of-mexico
+	.pacific-ocean
 		display none

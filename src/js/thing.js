@@ -112,7 +112,7 @@ var renderLocatorMap = function(config) {
      * Create the map projection.
      */
     // var centroid = [((bbox[0] + bbox[2]) / 2), ((bbox[1] + bbox[3]) / 2)];
-    var centroid = [-64, 29];
+    var centroid = [-64, 28.5];
     var mapScale = mapWidth * SCALE_FACTOR;
 
     var projection = PROJECTION()
@@ -178,6 +178,9 @@ var renderLocatorMap = function(config) {
     // Tracks
     renderPaths('tracks')
 
+    // Matthew
+    renderPaths('matthew')
+
     /*
      * Render labels.
      */
@@ -237,13 +240,13 @@ var renderLocatorMap = function(config) {
 
     waterLabels.append('text')
         .attr('class', 'pacific-ocean')
-        .attr('transform', 'translate(' + projection([-133, 15]) + ')')
+        .attr('transform', 'translate(' + projection([-130, 15]) + ')')
         .text('Pacific Ocean');
 
-    waterLabels.append('text')
-        .attr('class', 'gulf-of-mexico')
-        .attr('transform', 'translate(' + projection([-95, 25]) + ')')
-        .text('Gulf of Mexico');
+    labelsElement.append('text')
+        .attr('class', 'matthew')
+        .attr('transform', 'translate(' + projection([-65, 16]) + ')')
+        .text('Hurricane Matthew');
 
     /*
      * Render a scale bar.

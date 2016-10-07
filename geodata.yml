@@ -28,3 +28,7 @@ layers:
         properties:
             - 'year'
             - 'saffir'
+
+    matthew:
+        type: 'shp'
+        path: 'data/al142016_best_track/al142016_lin.shp'
