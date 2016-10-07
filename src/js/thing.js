@@ -59,6 +59,7 @@ function init() {
 
         render();
         $(window).resize(utils.throttle(onResize, 250));
+
     });
 }
 
@@ -180,6 +181,21 @@ var renderLocatorMap = function(config) {
 
     // Matthew
     renderPaths('matthew')
+
+    console.log(d3.selectAll('.tracks path,.matthew path'));
+
+    d3.selectAll('.tracks path,.matthew path').each(function(d) {
+        var path = d3.select(this);
+        var totalLength = path.node().getTotalLength();
+
+        path.attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .transition()
+            // Sampled at 6 hour intervals
+            .duration(totalLength * (1 / mapScale) * 1200)
+            .ease("linear")
+            .attr("stroke-dashoffset", 0);
+    })
 
     /*
      * Render labels.

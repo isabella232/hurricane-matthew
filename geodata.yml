@@ -31,4 +31,4 @@ layers:
 
     matthew:
         type: 'shp'
-        path: 'data/al142016_best_track/al142016_lin.shp'
+        path: 'data/al142016_best_track/simplified.shp'
