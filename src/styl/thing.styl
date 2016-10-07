@@ -1,0 +1,110 @@
+#title
+	position absolute
+	top 10px
+	left 10px
+	margin 0
+	padding 0
+
+.footer
+	position absolute
+	margin 0
+	padding 0
+	font-family $qz-sans
+	color $qz-gray-2
+	font-size 14px
+
+	&.left
+		left 10px
+
+	&.right
+		right 10px
+
+svg
+	font-size 20px
+	font-family: $qz-sans
+	background-color $qz-map-water
+
+// Paths
+.paths
+	.countries path
+		fill $qz-map-land-fill
+		stroke $qz-map-land-stroke
+		stroke-width 1.5px
+
+	.states path
+		fill $qz-map-land-fill
+		stroke $qz-map-land-stroke
+		stroke-width 0.5px
+
+	.cities path
+		fill $qz-gray-2
+		display none
+
+		&.miami,
+		&.new-orleans,
+		&.tampa,
+		&.raleigh,
+		&.norfolk
+			display block
+
+	.tracks path
+		fill: none
+		stroke: $qz-purp-2
+
+
+// Labels
+.labels
+	text
+		fill $qz-gray-2
+		font-size 80%
+		text-anchor start
+		alignment-baseline: middle
+		-webkit-font-smoothing antialiased
+
+	.countries text
+		fill $qz-body-black
+		font-size: 90%
+		text-anchor: middle
+		display none
+
+		&.united-states,
+		&.cuba,
+		&.haiti,
+		&.mexico
+			display block
+
+	.cities text
+		display none
+
+		&.miami,
+		&.new-orleans,
+		&.tampa,
+		&.raleigh,
+		&.norfolk
+			display block
+
+	.water text
+		font-size: 100%
+
+		&.gulf-of-mexico
+			font-size: 80%
+
+// Scale bar
+.scale-bar
+	line
+		stroke $qz-gray-2
+		stroke-width 5px
+
+	text
+		fill $qz-gray-2
+		font-size 100%
+		alignment-baseline: middle
+		-webkit-font-smoothing antialiased
+
+// responsive styles
+@media screen and (max-width $width-mobile)
+	svg
+		font-size 14px
+
+	.gulf-of-mexico
+		display none
