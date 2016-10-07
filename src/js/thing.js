@@ -256,7 +256,7 @@ var renderLocatorMap = function(config) {
     /*
      * Render a scale bar.
      */
-    var scaleBarDistance = geomath.calculateOptimalScaleBarDistance(bbox, 10);
+    var scaleBarDistance = 1000;
     var scaleBarStart = [10, mapHeight - 35];
     var scaleBarEnd = geomath.calculateScaleBarEndPoint(projection, scaleBarStart, scaleBarDistance);
 
