@@ -94,7 +94,7 @@ function render() {
     });
 
     // Resize
-    fm.resize();
+    // fm.resize();
 }
 
 var renderLocatorMap = function(config) {
@@ -182,20 +182,9 @@ var renderLocatorMap = function(config) {
     // Matthew
     renderPaths('matthew')
 
-    // Animate paths on desktop only
     if (!isMobile) {
-        d3.selectAll('.tracks path,.matthew path').each(function(d) {
-            var path = d3.select(this);
-            var totalLength = path.node().getTotalLength();
-
-            path.attr("stroke-dasharray", totalLength + " " + totalLength)
-                .attr("stroke-dashoffset", totalLength)
-                .transition()
-                // Sampled at 6 hour intervals
-                .duration(totalLength * (1 / mapScale) * 1200)
-                .ease("linear")
-                .attr("stroke-dashoffset", 0);
-        })
+        d3.selectAll('.tracks path,.matthew path')
+            .attr("stroke-dashoffset", 0);
     }
 
     /*
@@ -296,6 +285,24 @@ var renderLocatorMap = function(config) {
      */
     d3.selectAll('.footer')
         .style('top', (mapHeight - 25) + 'px')
+
+    fm.resize();
+
+    // Animate paths on desktop only
+    if (!isMobile) {
+        d3.selectAll('.tracks path,.matthew path').each(function(d) {
+            var path = d3.select(this);
+            var totalLength = path.node().getTotalLength();
+
+            path.attr("stroke-dasharray", totalLength + " " + totalLength)
+                .attr("stroke-dashoffset", totalLength)
+                .transition()
+                // Sampled at 6 hour intervals
+                .duration(totalLength * (1 / mapScale) * 1200)
+                .ease("linear")
+                .attr("stroke-dashoffset", 0);
+        })
+    }
 }
 
 // Bind on-load handler
