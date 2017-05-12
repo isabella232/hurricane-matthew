@@ -1,10 +1,7 @@
 // NPM modules
 var d3 = require('d3');
 var geo = require('d3-geo-projection');
-// console.log(d3.geo);
-// console.log(geo);
 var topojson = require('topojson');
-var _ = require('lodash');
 
 // Local modules
 var features = require('./detectFeatures')();
@@ -149,9 +146,11 @@ var renderLocatorMap = function(config) {
             c.push(utils.classify(d['id']));
         }
 
-        _.each(d['properties'], function(v, k) {
-            c.push(utils.classify(k + '-' + v));
-        });
+        for (var property in d['properties']) {
+            var value = d['properties'][property];
+
+            c.push(utils.classify(property + '-' + value));
+        }
 
         return c.join(' ');
     }
